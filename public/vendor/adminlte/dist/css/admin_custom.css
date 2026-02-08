@@ -1,0 +1,27 @@
+/* Logo del sidebar */
+.brand-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    padding: 0;
+}
+
+/* Imagen del logo */
+.brand-link .brand-image {
+    float: none;
+    margin: 0;
+    max-height: 40px;
+    width: auto;
+}
+
+/* Texto del logo */
+.brand-link .brand-text {
+    margin-left: 10px;
+    font-weight: 600;
+}
+
+/* Quitar espacio raro arriba del sidebar */
+.main-sidebar {
+    padding-top: 0;
+}
