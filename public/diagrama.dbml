@@ -1,0 +1,166 @@
+Table users {
+    id integer [primary key]
+    name varchar
+    email varchar
+    password varchar
+}
+
+Table roles {
+    id integer [primary key]
+    name varchar 
+}
+
+Table users_roles{
+    user_id integer [ref: > users.id]
+    role_id integer [ref: > users.id]
+}
+
+Table docentes {
+    id integer [primary key]
+    usuario_id integer [ref: > users.id]
+    nombres varchar 
+    apellidos varchar
+    ci varchar
+    fecha_nacimiento varchar
+    telefono varchar
+    profesion varchar
+    sede varchar
+    facultad  varchar
+    carrera varchar
+    direccion varchar
+    foto text
+}
+
+Table administrativos {
+    id integer [primary key]
+    usuario_id integer [ref: > users.id]
+    nombres varchar 
+    apellidos varchar
+    ci varchar
+    fecha_nacimiento varchar
+    telefono varchar
+    profesion varchar
+    direccion varchar
+}
+
+Table estudiantes {
+    id integer [primary key]
+    usuario_id integer [ref: > users.id]
+    nombres varchar 
+    apellidos varchar
+    ci varchar
+    fecha_nacimiento date
+    telefono varchar
+    ref_celular varchar
+    persona_emergencia varchar
+    numero_emergencia varchar
+    direccion varchar
+    foto text
+}
+
+Table configuraciones {
+    id integer [primary key]
+    nombre varchar
+    facultad varchar
+    descripcion varchar
+    direccion varchar
+    codigo_postal varchar
+    telefono varchar
+    web varchar
+    logo text
+    facebook varchar
+    instagram varchar
+    twitter varchar
+}
+
+Table semestres {
+    id integer [primary key]
+    nombre varchar 
+}
+
+Table periodos {
+    id integer [primary key]
+    nombre varchar 
+}
+
+Table materias {
+    id integer [primary key]
+    nombre varchar 
+}
+
+Table laboratorios {
+    id integer [primary key]
+    nombre varchar
+    descripcion varchar
+    estado varchar 
+}
+
+Table materiales_equipos {
+    id integer [primary key]
+    laboratorio_id integer [ref: > laboratorios.id]
+    articulo varchar
+    marca varchar
+    descripcion varchar
+    observacion varchar 
+}
+
+Table inscripciones {
+    id integer [primary key]
+    estudiante_id integer [ref: > estudiantes.id]
+    periodo_id integer [ref: > periodos.id]
+    semestre_id integer [ref: > semestres.id]
+    sede varchar 
+    facultad varchar
+    paralelo varchar
+    fecha_inscripcion date
+}
+
+Table asignacion_estudiantes {
+    id integer [primary key]
+    inscripcion_id integer [ref: > inscripciones.id]
+    docente_id integer [ref: > docentes.id]
+    laboratorio_id integer [ref: > laboratorios.id]
+    turno varchar 
+    hora_inicio time
+    hora_fin time
+    tipo_uso varchar 
+    observaciones varchar 
+    fecha_asignacion date
+}
+Table actividades {
+    id integer [primary key]
+    docente_id integer [ref: > docentes.id]
+    laboratorio_id integer [ref: > laboratorios.id]
+    fecha_actividad date
+    actividad_realizada varchar
+    observaciones varchar
+    estado varchar   
+    hora_inicio time
+    hora_fin time
+}
+
+
+table grupos_academicos {
+    id integer [primary key]
+    docente_id integer [ref: > docentes.id]
+    periodo_id integer [ref: > periodos.id]
+    materia_id integer [ref: > materias.id]
+    semestre_id integer [ref: > semestres.id]
+    paralelo varchar
+    cant_estudiantes integer
+    estado varchar
+}
+
+table horarios {
+    id horario [primary key]
+    grupo_academico_id integer [ref: > grupos_academicos.id]
+    dia varchar
+    hora_inicio time
+    hora_fin time
+    aula varchar
+    estado varchar
+}
+
+
+
+

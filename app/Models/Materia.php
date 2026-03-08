@@ -12,4 +12,8 @@ class Materia extends Model
     protected $fillable=[
         'nombre',
     ];
+
+    public function gruposAcademicos(){
+        return $this->hasMany(GruposAcademico::class);
+    }
 }

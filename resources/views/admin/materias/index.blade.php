@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    <h1><b>Listado de Periodos academicos</b></h1>
+    <h1><b>Listado de Materias academicas</b></h1>
     <hr>
 @stop
 

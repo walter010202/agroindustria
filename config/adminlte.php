@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>AGRO</b>UAE',
+    'logo' => '<b>LAB</b>UAE',
     'logo_img' => 'vendor/adminlte/dist/img/logo_uae.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -344,20 +344,114 @@ return [
 
             ],
         ],
-        [
-            'text' => 'profile',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-            'classes'=>'bg-success text-white',
-        ],
-        [
-            'text' => 'change_password',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-            'classes'=>'bg-success text-white',
-        ],
        
-        ['header' => 'DATOS ACADEMICOS'],
+        ['header' => 'DATOS ACADÉMICOS'],
+
+        [
+            'text'=>'Roles',
+            'icon'=>'fas fa-fw fa-user-check',
+            'classes'=>'bg-success text-white',
+            'submenu'=>[
+                [
+                    'text'=>'Listado de roles',
+                    'url'=>'admin/roles',
+                    'classes'=>'bg-white text-black',
+                ],
+
+            ],
+        ],
+
+        [
+            'text' => 'Administrativos',
+            'url' => 'admin/administrativos',
+            'icon' => 'fas fa-fw fa-users-cog', 
+            'classes'=>'bg-success text-white',
+        ],
+        [
+            'text'=>'Docentes',
+            'icon'=>'fas fa-fw fa-chalkboard-teacher',
+            'classes'=>'bg-success text-white',
+            'submenu'=>[
+                [
+                    'text'=>'Complete sus datos',
+                    'url'=>'admin/docentes',
+                    'classes'=>'bg-white text-black',
+                ],
+                [
+                    'text'=>'Grupos academicos',
+                    'url'=>'admin/grupos_academicos',
+                    'classes'=>'bg-white text-black',
+                ],
+                [
+                    'text'=>'Horarios',
+                    'url'=>'admin/horarios',
+                    'classes'=>'bg-white text-black',
+                ],
+
+
+            ],
+        ],
+
+        [
+            'text'=>'Estudiantes',
+            'icon'=>'fas fa-fw fa-user-graduate',
+            'classes'=>'bg-success text-white',
+            'submenu'=>[
+                [
+                    'text'=>'Complete sus datos',
+                    'url'=>'admin/estudiantes',
+                    'classes'=>'bg-white text-black',
+                ],
+            ],
+        ],
+
+        [
+            'text' => 'Asignación de Laboratorios',
+            'url' => 'admin/inscripciones',
+            'icon' => 'fas fa-fw fa-clipboard-list', 
+            'classes'=>'bg-success text-white',
+            'submenu'=>[
+
+                [
+                    'text'=>'Asignación de laboratorios para estudiantes',
+                    'url'=>'admin/inscripciones',
+                    'classes'=>'bg-white text-black',
+                ],
+            ],
+
+        ],
+
+        [
+            'text' => 'Calendario',
+            'url' => 'admin/calendario',
+            'icon' => 'fas fa-calendar', 
+            'classes'=>'bg-success text-white',
+        ],
+
+        ['header' => 'DATOS DE LOS LABORATORIOS'],
+
+        [
+            'text' => 'Laboratorios',
+            'url' => 'admin/laboratorios',
+            'icon' =>  'fas fa-fw fa-flask',  
+            'classes'=>'bg-success text-white',
+            'submenu'=>[
+                [
+                    'text'=>'Laboratorios disponibles',
+                    'url'=>'admin/laboratorios',
+                ],
+            ],
+
+        ],
+
+        [
+            'text' => 'Actividades',
+            'url' => 'admin/actividades',
+            'icon' => 'fas fa-fw fa-tasks', 
+            'classes'=>'bg-success text-white',
+        ],
+
+
         
         
         

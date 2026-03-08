@@ -12,5 +12,14 @@ class Semestre extends Model
     protected $fillable=[
         'nombre',
     ];
+
+    public function inscripciones()
+    {
+    return $this->hasMany(Inscripcion::class);
+    }
+
+    public function gruposAcademicos(){
+        return $this->hasMany(GruposAcademico::class);
+    }
     
 }
