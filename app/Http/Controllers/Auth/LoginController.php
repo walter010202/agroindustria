@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request; // ✅ ESTA LÍNEA ES LA CLAVE
 
 class LoginController extends Controller
 {
@@ -36,5 +37,25 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
         $this->middleware('auth')->only('logout');
+    }
+
+    protected function validateLogin(Request $request)
+    {
+        $request->validate([
+            $this->username() => [
+                'required',
+                'email',
+                function ($attribute, $value, $fail) {
+                    // 👇 correo del administrador (TU correo)
+                    $adminEmail = 'walter.avr0102@gmail.com';
+
+                    // Si NO es el admin, exigir correo institucional
+                    if ($value !== $adminEmail && !str_ends_with($value, '@uagraria.edu.ec')) {
+                        $fail('Solo se permite el ingreso con correo institucional.');
+                    }
+                },
+            ],
+            'password' => 'required|string',
+        ]);
     }
 }

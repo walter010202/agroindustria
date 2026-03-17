@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Administrativo;
+use App\Models\Configuracion;
 use App\Models\Estudiante;
 use App\Models\Laboratorio;
 use App\Models\Materia;
@@ -29,10 +30,26 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        Role::create(['name'=>'Administrador']);
-        Role::create(['name'=>'Docente']);
-        Role::create(['name'=>'Estudiante']);
-        Role::create(['name'=>'Administrativo']);
+        $this->call([RoleSeeder::class]);
+
+        Configuracion::create([
+            'nombre'=>'Universidad Agraria del Ecuador',
+            'facultad'=>'Ciencias Agrarias',
+            'descripcion'=>'"FORMANDO A LOS MISIONEROS DE LA TÉCNICA EN EL AGRO"',
+            'direccion'=>'Av. 25 de Julio y Pío Jaramillo, Guayaquil, Ecuador',
+            'codigo_postal'=>'090104',
+            'telefono'=>'(04) 2439995 - 2439394',
+            'web'=>'https://www.uagraria.edu.ec/',
+            'logo'=>'img/logo_uae.png',
+            'facebook'=>'@uae.agraria',
+            'instagram'=>'@uae.agraria',
+            'twitter'=>'@uae_agraria',
+        ]);
+
+        //Role::create(['name'=>'Administrador']);
+        //Role::create(['name'=>'Docente']);
+        //Role::create(['name'=>'Estudiante']);
+        //Role::create(['name'=>'Administrativo']);
 
 
         User::create([
@@ -100,7 +117,7 @@ class DatabaseSeeder extends Seeder
         Laboratorio::create(['nombre'=>'Laboratorio de Lácteos',
                             'descripcion'=>'Es una instalación dedicada al análisis, control de calidad y desarrollo de productos lácteos',
                             'estado'=>'Activo']);
-        Laboratorio::create(['nombre'=>'Laboratorio de Químicos Alimentícios',
+        Laboratorio::create(['nombre'=>'Laboratorio de Química de Alimentos',
                             'descripcion'=>'Espacio especializado para analizar la composición, calidad, seguridad e inocuidad de los alimentos mediante ensayos físico-químicos y microbiológicos',
                             'estado'=>'Activo']);
         Laboratorio::create(['nombre'=>'Laboratorio de Microbiología',
@@ -108,34 +125,32 @@ class DatabaseSeeder extends Seeder
                             'estado'=>'Activo']);
         Laboratorio::create(['nombre'=>'Laboratorio de Análisis Sensorial',
                             'descripcion'=>'Espacio técnico y controlado dedicado a evaluar productos principalmente alimentos y bebidas utilizando los sentidos humanos como instrumentos de medición',
-                            'estado'=>'Inactivo']);
-        Laboratorio::create(['nombre'=>'Laboratorio de Planta Piloto',
+                            'estado'=>'Activo']);
+        Laboratorio::create(['nombre'=>'Planta Piloto',
                             'descripcion'=>'Instalación industrial a escala reducida diseñada para reproducir, validar y optimizar procesos químicos, físicos o biológicos antes de pasar a la producción comercial completa.',
                             'estado'=>'Activo']);
 
-        /*$usuario= User::create([
-            'name'=>'Estudiante Ejemplo',
-            'email'=>'estudiante@example.com',
-            'password'=>Hash::make('11223344')
+        $usuario= User::create([
+            'name'=>'Alba Medina Rodríguez',
+            'email'=>'amedina@uagraria.edu.ec',
+            'password'=>Hash::make('23456789')
 
-        ])->assignRole('Estudiante');
+        ])->assignRole('Administrativo');
 
-        Estudiante::create([
+        Administrativo::create([
             'usuario_id'=> $usuario->id,
-            'nombres'=>'Carlos',
-            'apellidos'=>'Gómez',
-            'ci'=>'0974748277',
-            'fecha_nacimiento'=>'2005-03-15',
-            'telefono'=>'0974648332',
-            'ref_celular'=>'0967588574',
-            'persona_emergencia'=>'Padre',
-            'numero_emergencia'=>'0967463847',
-            'direccion'=>'Calle 456, Ciudad Ejmeplo',
-            'foto'=>'foto.jpg'
-        ]);*/
+            'nombres'=>'Alba',
+            'apellidos'=>'Medina Rodríguez',
+            'ci'=>'0908553563',
+            'telefono'=>'0991131065',
+            'direccion'=>'Av. 25 de Julio, Guayaquil 090104',
+            'profesion'=>'Ingeniera agrónoma',
+            'fecha_nacimiento'=>'1986-06-12',
+        ]);
 
         $this->call([EstudianteSeeder::class]);
         $this->call([DocenteSeeder::class]);
 
+        
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
@@ -49,6 +50,41 @@ class RoleController extends Controller
     public function show(string $id)
     {
         //
+    }
+
+    public function permisos($id){
+        $rol=Role::find($id);
+        $permisos = Permission::all()->groupBy(function($permiso){
+            if(stripos($permiso->name,'configuraciones') !==false){return 'Configuraciones';}
+            if(stripos($permiso->name,'actividades') !==false){return 'Actividades';}
+            if(stripos($permiso->name,'periodos') !==false){return 'Periodos';}
+            if(stripos($permiso->name,'semestres') !==false){return 'Semestres';}
+            if(stripos($permiso->name,'materias') !==false){return 'Materias';}
+            if(stripos($permiso->name,'administrativos') !==false){return 'Administrativos';}
+            if(stripos($permiso->name,'horarios') !==false){return 'Horarios';}
+            if(stripos($permiso->name,'docentes') !==false){return 'Docentes';}
+            if(stripos($permiso->name,'estudiantes') !==false){return 'Estudiantes';}
+            if(stripos($permiso->name,'laboratorios') !==false){return 'Laboratorios';}
+            if(stripos($permiso->name,'inscripciones') !==false){return 'Inscripciones';}
+            if(stripos($permiso->name,'materiales_equipos') !==false){return 'Materiales y Equipos';}
+            if(stripos($permiso->name,'roles') !==false){return 'Roles';}
+            if(stripos($permiso->name,'asignaciones_estudiantes') !==false){return 'Asignar Estudiantes';}
+            if(stripos($permiso->name,'calendario') !==false){return 'Calendario';}
+            if(stripos($permiso->name,'grupos_academicos') !==false){return 'Grupos Academicos';}
+        });
+        //$roles = Role::all();
+        return view('admin.roles.permisos', compact('permisos','rol'));
+    }
+
+    public function update_permisos(Request $request, $id){
+        $rol = Role::find($id);
+        $rol->permissions()->sync($request->input('permisos'));
+
+        return redirect()->route('admin.roles.index')
+            ->with('mensaje', 'Se modificaron los permisos de la manera correcta')
+            ->with('icono', 'success');
+
+
     }
 
     /**

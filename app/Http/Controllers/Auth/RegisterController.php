@@ -50,7 +50,16 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users',
+                function ($attribute, $value, $fail) {
+                // Correo personal permitido SOLO para el administrador
+                $adminEmail = 'walter.avr0102@gmail.com';
+
+                if ($value !== $adminEmail && !str_ends_with($value, '@uagraria.edu.ec')) {
+                    $fail('Solo se permite el correo institucional (@uagraria.edu.ec)');
+                    }
+                },
+            ],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -63,10 +72,34 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $email = $data['email'];
+
+
+        // 🧠 Usuario antes del @
+        $username = explode('@', $email)[0];
+
+
+        // 🧠 Contar puntos
+        $puntos = substr_count($username, '.');
+
+
+        // 🎯 Determinar rol
+        if ($email === 'walter.avr0102@gmail.com') {
+        $rol = 'Administrador';
+        } elseif ($puntos >= 2) {
+        $rol = 'Estudiante';
+        } else {
+        $rol = 'Docente';
+        }
+
+        // 👤 Crear usuario
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        // 🔑 ASIGNAR ROL (FORMA CORRECTA)
+        $user->assignRole($rol);
+        return $user;
     }
 }

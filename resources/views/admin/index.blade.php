@@ -1,8 +1,14 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    <h1>Bienvenidos a los laboratorios</h1>
-    <hr>
+    <h1>
+        Bienvenido,
+        @role('Administrador') Administrador/a: @endrole
+        @role('Docente') Docente: @endrole
+        @role('Estudiante') Estudiante: @endrole
+        @role('Administrativo') Administrativo/a: @endrole
+        <b>{{ auth()->user()->name }}</b>
+    </h1>
 @stop
 
 @section('content')

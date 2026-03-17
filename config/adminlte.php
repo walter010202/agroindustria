@@ -324,22 +324,22 @@ return [
                 [    
                     'text'=>'Configuración',
                     'url'=>'admin/configuraciones',
-                    'classes'=>'bg-white text-white',
+                    'can' => 'admin.configuraciones.index',
                 ],
                 [    
                     'text'=>'Semestre',
                     'url'=>'admin/semestres',
-                    'classes'=>'bg-white text-black',
+                    'can' => 'admin.semestres.index',
                 ],
                 [    
                     'text'=>'Periodos',
                     'url'=>'admin/periodos',
-                    'classes'=>'bg-white text-black',
+                    'can' => 'admin.periodos.index',
                 ],
                 [    
                     'text'=>'Materias',
                     'url'=>'admin/materias',
-                    'classes'=>'bg-white text-black',
+                    'can' => 'admin.materias.index',
                 ],
 
             ],
@@ -355,7 +355,7 @@ return [
                 [
                     'text'=>'Listado de roles',
                     'url'=>'admin/roles',
-                    'classes'=>'bg-white text-black',
+                    'can' => 'admin.roles.index',
                 ],
 
             ],
@@ -364,28 +364,30 @@ return [
         [
             'text' => 'Administrativos',
             'url' => 'admin/administrativos',
-            'icon' => 'fas fa-fw fa-users-cog', 
-            'classes'=>'bg-success text-white',
+            'icon' => 'fas fa-fw fa-users-cog',
+            'classes'=>'bg-success text-white', 
+            'can' => 'admin.administrativos.index',
         ],
         [
             'text'=>'Docentes',
             'icon'=>'fas fa-fw fa-chalkboard-teacher',
             'classes'=>'bg-success text-white',
+            'can' => 'admin.docentes.index',
             'submenu'=>[
                 [
                     'text'=>'Complete sus datos',
                     'url'=>'admin/docentes',
-                    'classes'=>'bg-white text-black',
+                    'can' => 'admin.docentes.index',
                 ],
                 [
                     'text'=>'Grupos academicos',
                     'url'=>'admin/grupos_academicos',
-                    'classes'=>'bg-white text-black',
+                    'can' => 'admin.grupos_academicos.index',
                 ],
                 [
                     'text'=>'Horarios',
                     'url'=>'admin/horarios',
-                    'classes'=>'bg-white text-black',
+                    'can' => 'admin.horarios.index',
                 ],
 
 
@@ -395,12 +397,13 @@ return [
         [
             'text'=>'Estudiantes',
             'icon'=>'fas fa-fw fa-user-graduate',
+            'can' => 'admin.estudiantes.index',
             'classes'=>'bg-success text-white',
             'submenu'=>[
                 [
                     'text'=>'Complete sus datos',
                     'url'=>'admin/estudiantes',
-                    'classes'=>'bg-white text-black',
+                    'can' => 'admin.estudiantes.index',
                 ],
             ],
         ],
@@ -408,14 +411,15 @@ return [
         [
             'text' => 'Asignación de Laboratorios',
             'url' => 'admin/inscripciones',
-            'icon' => 'fas fa-fw fa-clipboard-list', 
-            'classes'=>'bg-success text-white',
+            'icon' => 'fas fa-fw fa-clipboard-list',
+            'classes'=>'bg-success text-white', 
+            'can' => 'admin.inscripciones.index',
             'submenu'=>[
 
                 [
                     'text'=>'Asignación de laboratorios para estudiantes',
                     'url'=>'admin/inscripciones',
-                    'classes'=>'bg-white text-black',
+                    'can' => 'admin.inscripciones.index',
                 ],
             ],
 
@@ -424,8 +428,9 @@ return [
         [
             'text' => 'Calendario',
             'url' => 'admin/calendario',
-            'icon' => 'fas fa-calendar', 
-            'classes'=>'bg-success text-white',
+            'icon' => 'fas fa-calendar',
+            'classes'=>'bg-success text-white', 
+            'can' => 'admin.calendario.index',
         ],
 
         ['header' => 'DATOS DE LOS LABORATORIOS'],
@@ -435,10 +440,12 @@ return [
             'url' => 'admin/laboratorios',
             'icon' =>  'fas fa-fw fa-flask',  
             'classes'=>'bg-success text-white',
+            'can' => 'admin.laboratorios.index',
             'submenu'=>[
                 [
                     'text'=>'Laboratorios disponibles',
                     'url'=>'admin/laboratorios',
+                    'can' => 'admin.laboratorios.index',
                 ],
             ],
 
@@ -447,8 +454,9 @@ return [
         [
             'text' => 'Actividades',
             'url' => 'admin/actividades',
-            'icon' => 'fas fa-fw fa-tasks', 
-            'classes'=>'bg-success text-white',
+            'icon' => 'fas fa-fw fa-tasks',
+            'classes'=>'bg-success text-white', 
+            'can' => 'admin.actividades.index',
         ],
 
 
