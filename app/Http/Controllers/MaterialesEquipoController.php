@@ -76,7 +76,7 @@ class MaterialesEquipoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Laboratorio $laboratorio, Materiales_equipo $materiales_equipo)
+    public function update(Request $request, Laboratorio $laboratorio, Materiales_equipo $material)
     {
         //
         $request->validate([
@@ -88,7 +88,7 @@ class MaterialesEquipoController extends Controller
             'estado' => 'required|string|max:255',
         ]);
 
-        $materiales_equipo->update($request->all());
+        $material->update($request->all());
 
         return redirect()
             ->route('admin.materiales_equipos.index', $laboratorio->id)
@@ -99,12 +99,11 @@ class MaterialesEquipoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Materiales_equipo $materiales_equipo, $laboratorio)
+    public function destroy(Laboratorio $laboratorio, Materiales_equipo $material)
     {
-        //
+        $material->delete();
 
-        $materiales_equipo->delete();
-         return redirect()
+        return redirect()
             ->route('admin.materiales_equipos.index', $laboratorio->id)
             ->with('mensaje', 'Material Eliminado correctamente')
             ->with('icono', 'success');

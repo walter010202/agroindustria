@@ -25,8 +25,17 @@ Auth::routes();
 //    abort(403, 'registro no permitido');// O redirigir a otra Ruta
 //})->name('register');
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index.home');
-Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index')->middleware('auth');
+//Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index.home');
+//Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index')->middleware('auth');
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])
+        ->name('admin.index.home');
+
+    Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])
+        ->name('admin.index');
+
+});
 //Rutas de Configuraciones
 Route::get('/admin/configuraciones',[App\Http\Controllers\ConfiguracionController::class,'index'])->name('admin.configuraciones.index')->middleware('auth','can:admin.configuraciones.index');
 Route::post('/admin/configuraciones/create',[App\Http\Controllers\ConfiguracionController::class,'store'])->name('admin.configuraciones.store')->middleware('auth','can:admin.configuraciones.store');

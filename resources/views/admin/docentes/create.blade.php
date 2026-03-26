@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('content_header') 
-    <h1><b>Personal docente/Resgistrarse si es nuevo el docente</b></h1>
+    <h1><b>Personal docente/Resgistrese si es nuevo como docente</b></h1>
     <hr>
 @stop
 
@@ -114,7 +114,7 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="email">Correo institucional</label><b>(*)</b>
+                                    <label for="email">Correo Electrónico</label><b>(*)</b>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-envelope"></i></span>
@@ -221,7 +221,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="foto">Foto</label>
+                                    <label for="foto">Foto de perfil</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-image"></i></span>

@@ -3,11 +3,13 @@
 @section('content_header')
     <h1>
         Bienvenido,
+
         @role('Administrador') Administrador/a: @endrole
         @role('Docente') Docente: @endrole
         @role('Estudiante') Estudiante: @endrole
         @role('Administrativo') Administrativo/a: @endrole
-        <b>{{ auth()->user()->name }}</b>
+
+        <b>{{ Auth::user()->name ?? '' }}</b>
     </h1>
 @stop
 

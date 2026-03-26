@@ -45,19 +45,23 @@ class DocenteController extends Controller
             'direccion'=>'required|string|max:100',
             'profesion'=>'required|string|max:100',
             'rol'=>'required',
-            'email'=>'required|unique:users',
+            'email'=>'required|email',
             'foto'=>'required|image',
             'facultad'=>'required',
             'carrera' => 'required|string|max:100',
             'sede' => 'required|string|max:100',
         ]);
-        $usuario=new User();
-        $usuario->name=$request->nombres."".$request->apellidos;
-        $usuario->email=$request->email;
-        $usuario->password=Hash::make($request->ci);
-        $usuario->save();
+        $usuario = User::where('email', $request->email)->first();
 
-        $usuario->assignRole($request->rol);
+        if (!$usuario) {
+            $usuario = new User();
+            $usuario->name = $request->nombres . " " . $request->apellidos;
+            $usuario->email = $request->email;
+            $usuario->password = Hash::make($request->ci);
+            $usuario->save();
+
+            $usuario->assignRole($request->rol);
+        }
 
         $docente=new Docente();
         $docente->usuario_id = $usuario->id;
@@ -127,7 +131,7 @@ class DocenteController extends Controller
             'profesion'=>'required|string|max:100',
             'rol'=>'required',
             'email'=>'required|email|unique:users,email,' . $docente->usuario->id,
-            'foto'=>'required|image',
+            'foto'=>'nullable|image',
             'facultad'=>'required',
             'carrera' => 'required|string|max:100',
             'sede' => 'required|string|max:100',

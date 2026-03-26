@@ -44,7 +44,7 @@ class EstudianteController extends Controller
             'numero_emergencia'=>'required|digits:10',
             'direccion'=>'required|string|max:100',
             'rol'=>'required',
-            'email'=>'required|unique:users',
+            'email'=>'required|email',
             'foto'=>'required|image',
         ]);
 

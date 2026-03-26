@@ -101,12 +101,12 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-info-circle"></i></span>
                             </div>
-                            <select name="estado" class="form-control" required>
+                            <select class="form-control" name="estado"  required>
                                 <option value="">Seleccione el estado de los materiales y equipos</option>
-                                <option value="Disponible" {{ old('estado', $material->estado) == 'Disponible' ? 'selected' : '' }}>Disponible</option>
-                                <option value="En uso" {{ old('estado', $material->estado) == 'En uso' ? 'selected' : '' }}>En uso</option>
-                                <option value="Dañado" {{ old('estado', $material->estado) == 'Dañado' ? 'selected' : '' }}>Dañado</option>
-                                <option value="Matenimiento" {{ old('estado', $material->estado) == 'Mantenimiento' ? 'selected' : '' }}>Matenimiento</option>
+                                <option value="Disponible"{{'Disponible'== $material->estado ? 'selected': ''}}>Disponible</option>
+                                <option value="En uso"{{'En uso'== $material->estado ? 'selected': ''}}>En uso</option>
+                                <option value="Dañado"{{'Dañado'== $material->estado ? 'selected': ''}}>Dañado</option>
+                                <option value="Mantenimiento"{{'Mantenimiento'== $material->estado ? 'selected': ''}}>Mantenimiento</option>
                             </select>
                         </div>
                         @error('estado')

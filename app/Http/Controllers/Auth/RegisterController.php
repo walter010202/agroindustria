@@ -70,8 +70,9 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
+     protected function create(array $data)
     {
+
         $email = $data['email'];
 
 
@@ -85,18 +86,19 @@ class RegisterController extends Controller
 
         // 🎯 Determinar rol
         if ($email === 'walter.avr0102@gmail.com') {
-        $rol = 'Administrador';
+        $rol = 'Adminsitrador';
         } elseif ($puntos >= 2) {
         $rol = 'Estudiante';
         } else {
         $rol = 'Docente';
         }
 
+
         // 👤 Crear usuario
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+        $user = User::create([
+        'name' => $data['name'],
+        'email' => $data['email'],
+        'password' => Hash::make($data['password']),
         ]);
         // 🔑 ASIGNAR ROL (FORMA CORRECTA)
         $user->assignRole($rol);

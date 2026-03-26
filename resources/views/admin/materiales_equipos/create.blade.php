@@ -105,7 +105,7 @@
                                 <option value="Disponible">Disponible</option>
                                 <option value="En uso">En uso</option>
                                 <option value="Dañado">Dañado</option>
-                                <option value="Matenimiento">Matenimiento</option>
+                                <option value="Mantenimiento">Mantenimiento</option>
                             </select>
                         </div>
                         @error('estado')
