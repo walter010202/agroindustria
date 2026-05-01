@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Laboratorio: " + info.event.title + "\n" +
                 "Docente: " + info.event.extendedProps.docente + "\n" +
                 "Turno: " + info.event.extendedProps.turno + "\n" +
-                "Tipo de uso: " + info.event.extendedProps.tipo_uso + "\n" +
+                "Tipo de uso: " + info.event.extendedProps.uso + "\n" +
                 "Observaciones: " + info.event.extendedProps.observaciones
             );
         }

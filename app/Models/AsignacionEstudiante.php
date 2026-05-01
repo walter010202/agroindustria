@@ -34,4 +34,8 @@ class AsignacionEstudiante extends Model
     public function docente(){
         return $this->belongsTo(Docente::class);
     }
+    public function uso()
+    {
+        return $this->belongsTo(Uso::class);
+    }
 }

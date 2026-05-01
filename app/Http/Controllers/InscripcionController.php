@@ -10,6 +10,7 @@ use App\Models\Inscripcion;
 use App\Models\Laboratorio;
 use App\Models\Periodo;
 use App\Models\Semestre;
+use App\Models\Uso;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Milon\Barcode\Facades\DNS1DFacade as DNS1D;
@@ -26,8 +27,9 @@ class InscripcionController extends Controller
         $inscripciones = Inscripcion::all();
         $laboratorios=Laboratorio::all();
         $docentes=Docente::all();
+        $usos=Uso::all();
         $asignacionEstudiantes = AsignacionEstudiante::all();
-        return view('admin.inscripciones.index', compact('inscripciones','asignacionEstudiantes','laboratorios','docentes'));
+        return view('admin.inscripciones.index', compact('inscripciones','asignacionEstudiantes','laboratorios','docentes','usos'));
     }
 
     /**
@@ -125,7 +127,8 @@ class InscripcionController extends Controller
         $periodos=Periodo::all();
         $semestres=Semestre::all();
         $estudiantes=Estudiante::all();
-        return view('admin.inscripciones.edit', compact('inscripcion','periodos','semestres','estudiantes'));
+        $usos=Uso::all();
+        return view('admin.inscripciones.edit', compact('inscripcion','periodos','semestres','estudiantes','usos'));
     }
 
     /**

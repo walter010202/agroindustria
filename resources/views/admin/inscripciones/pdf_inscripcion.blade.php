@@ -114,7 +114,7 @@
             <tr>
                 <td style="text-align: center">{{$contador++}}</td>
                 <td style="text-align:center">{{$datos->laboratorio->nombre}}</td>
-                <td style="text-align:center">{{$datos->tipo_uso}}</td>
+                <td style="text-align:center">{{$datos->uso->nombre}}</td>
                 <td style="text-align:center">{{$datos->observaciones}}</td>
                 <td style="text-align:center">{{$datos->fecha_asignacion}}</td>
                 <td style="text-align:center">{{$datos->turno}}</td>

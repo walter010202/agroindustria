@@ -117,7 +117,7 @@
                                                                     <td>{{$asignacionEstudiante->hora_fin}}</td>
                                                                     <td>{{$asignacionEstudiante->laboratorio->nombre}}</td>
                                                                     <td>{{$asignacionEstudiante->docente->nombres.' '.$asignacionEstudiante->docente->apellidos}}</td>
-                                                                    <td>{{$asignacionEstudiante->tipo_uso}}</td>
+                                                                    <td>{{$asignacionEstudiante->uso->nombre}}</td>
                                                                     <td>{{$asignacionEstudiante->observaciones}}</td>
                                                                     <td>{{$asignacionEstudiante->fecha_asignacion}}</td>
                                                                     <td>
@@ -213,14 +213,14 @@
                                                                     @endforeach
                                                                 </select>
                                                             </div>
-
+                                                            <!-- Buscar tipo de uso -->
                                                             <div class="col-md-4">
                                                                 <label>Tipo de uso</label>
-                                                                <select name="tipo_uso" class="form-control" required>
+                                                                <select name="uso_id" class="form-control" required>
                                                                     <option value="">Seleccione</option>
-                                                                    <option value="Práctica">Práctica</option>
-                                                                    <option value="Investigación">Investigación</option>
-                                                                    <option value="Tesis">Tesis</option>
+                                                                    @foreach ($usos as $uso)
+                                                                        <option value="{{$uso->id}}">{{$uso->nombre}}</option>
+                                                                    @endforeach
                                                                 </select>
                                                             </div>
 

@@ -38,7 +38,7 @@ class LaboratorioController extends Controller
             'estado' => 'required|string|max:100',
         ]);
         Laboratorio::create($request->all());
-        return redirect()->route('admin.laboratorios.index')
+        return redirect('/admin/laboratorios')
                 ->with('mensaje', 'Laboratorio registrado correctamente')
                 ->with('icono', 'success');
     }
@@ -74,7 +74,7 @@ class LaboratorioController extends Controller
         ]);
         $laboratorio=Laboratorio::find($id);
         $laboratorio->update($request->all());
-        return redirect()->route('admin.laboratorios.index')
+        return redirect()->route('/admin/laboratorios')
                 ->with('mensaje', 'Laboratorio Actualizado correctamente')
                 ->with('icono', 'success');
     }
@@ -84,11 +84,17 @@ class LaboratorioController extends Controller
      */
     public function destroy($id)
     {
-        //
-        $laboratorio=Laboratorio::find($id);
+        $laboratorio = Laboratorio::find($id);
+    
+        if (!$laboratorio) {
+            return redirect('/admin/laboratorios')
+                ->with('mensaje', 'Laboratorio no encontrado')
+                ->with('icono','error');
+        }
+    
         $laboratorio->delete();
-
-        return redirect()->route('admin.laboratorios.index')
+    
+        return redirect('/admin/laboratorios')
                 ->with('mensaje', 'Laboratorio eliminado correctamente')
                 ->with('icono','success');
     }

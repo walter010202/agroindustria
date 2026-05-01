@@ -15,7 +15,7 @@ class CalendarioController extends Controller
 
     public function eventos()
     {
-        $asignaciones = AsignacionEstudiante::with('laboratorio','docente')->get();
+        $asignaciones = AsignacionEstudiante::with('laboratorio','docente','uso')->get();
 
         $eventos = [];
 
@@ -34,7 +34,7 @@ class CalendarioController extends Controller
                 'extendedProps' => [
                     'docente' => $asignacion->docente->nombres . ' ' . $asignacion->docente->apellidos,
                     'turno' => $asignacion->turno,
-                    'tipo_uso' => $asignacion->tipo_uso,
+                    'uso' => $asignacion->uso->nombre,
                     'observaciones' => $asignacion->observaciones,
                 ]
             ];

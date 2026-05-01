@@ -63,6 +63,14 @@ Route::get('/admin/materias/{id}',[App\Http\Controllers\MateriaController::class
 Route::get('/admin/materias/{id}/edit',[App\Http\Controllers\MateriaController::class,'edit'])->name('admin.materias.edit')->middleware('auth','can:admin.materias.edit');
 Route::put('/admin/materias/{id}',[App\Http\Controllers\MateriaController::class,'update'])->name('admin.materias.update')->middleware('auth','can:admin.materias.update');
 Route::delete('/admin/materias/{id}',[App\Http\Controllers\MateriaController::class,'destroy'])->name('admin.materias.destroy')->middleware('auth','can:admin.materias.destroy');
+//rutas para el tipo de utilizacion de los laboratorios
+Route::get('/admin/usos',[App\Http\Controllers\UsoController::class,'index'])->name('admin.usos.index')->middleware('auth','can:admin.usos.index');
+Route::get('/admin/usos/create',[App\Http\Controllers\UsoController::class,'create'])->name('admin.usos.create')->middleware('auth','can:admin.usos.create');
+Route::post('/admin/usos/create',[App\Http\Controllers\UsoController::class,'store'])->name('admin.usos.store')->middleware('auth','can:admin.usos.store');
+Route::get('/admin/usos/{id}',[App\Http\Controllers\UsoController::class,'show'])->name('admin.usos.show')->middleware('auth','can:admin.usos.show');
+Route::get('/admin/usos/{id}/edit',[App\Http\Controllers\UsoController::class,'edit'])->name('admin.usos.edit')->middleware('auth','can:admin.usos.edit');
+Route::put('/admin/usos/{id}',[App\Http\Controllers\UsoController::class,'update'])->name('admin.usos.update')->middleware('auth','can:admin.usos.update');
+Route::delete('/admin/usos/{id}',[App\Http\Controllers\UsoController::class,'destroy'])->name('admin.usos.destroy')->middleware('auth','can:admin.usos.destroy');
 //rutas para roles
 Route::get('/admin/roles',[App\Http\Controllers\RoleController::class,'index'])->name('admin.roles.index')->middleware('auth','can:admin.roles.index');
 Route::get('/admin/roles/create',[App\Http\Controllers\RoleController::class,'create'])->name('admin.roles.create')->middleware('auth','can:admin.roles.create');

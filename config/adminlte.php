@@ -332,6 +332,11 @@ return [
                     'url'=>'admin/materias',
                     'can' => 'admin.materias.index',
                 ],
+                [    
+                    'text'=>'Uso laboratoratorio',
+                    'url'=>'admin/usos',
+                    'can' => 'admin.usos.index',
+                ],
 
             ],
         ],

@@ -39,7 +39,7 @@ class AsignacionEstudianteController extends Controller
             'hora_fin' => 'required',
             'laboratorio_id'=>'required',
             'docente_id'=>'required',
-            'tipo_uso'=>'required',
+            'uso_id'=>'required',
             'observaciones'=>'required',
             'fecha_asignacion'=>'required',
             
@@ -48,8 +48,8 @@ class AsignacionEstudianteController extends Controller
         $existe = AsignacionEstudiante::where('laboratorio_id', $request->laboratorio_id)
         ->where('fecha_asignacion', $request->fecha_asignacion)
         ->where(function ($query) use ($request) {
-            $query->whereBetween('hora_inicio', [$request->hora_inicio, $request->hora_fin])
-                ->orWhereBetween('hora_fin', [$request->hora_inicio, $request->hora_fin]);
+            $query->where('hora_inicio', '<', $request->hora_fin)
+                ->where('hora_fin', '>', $request->hora_inicio);
         })
         ->exists();
 
@@ -68,7 +68,7 @@ class AsignacionEstudianteController extends Controller
         $asignacionEstudiante->hora_fin= $request->hora_fin;
         $asignacionEstudiante->laboratorio_id= $request->laboratorio_id;
         $asignacionEstudiante->docente_id= $request->docente_id;
-        $asignacionEstudiante->tipo_uso= $request->tipo_uso;
+        $asignacionEstudiante->uso_id= $request->uso_id;
         $asignacionEstudiante->observaciones= $request->observaciones;
         $asignacionEstudiante->fecha_asignacion= $request->fecha_asignacion;
         $asignacionEstudiante->save();
